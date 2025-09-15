@@ -1,1 +1,10 @@
-
+- name: EDMS
+  hosts: all
+  become: true
+  tasks:
+    - name: enable x11 forwarding
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^X11Forwarding'
+        line: X11Forwarding yes
+        state: present
